@@ -1,0 +1,211 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+* {
+    font-family: 'Poppins';
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+a {
+    text-decoration: none;
+}
+
+.container {
+    width: 90%;
+    margin: 0 auto;
+}
+
+.nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 40px 0;
+}
+
+.nav a {
+    color: #000;
+    /* Drop Shadow */
+    text-shadow: 4px 4px 10px 0px rgba(0, 0, 0, 0.15);
+    font-family: Poppins;
+    font-size: 22px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.mail {
+    text-decoration-line: underline;
+}
+
+.search-box {
+    position: relative;
+    width: 450px;
+}
+
+.search-box input {
+    width: 100%;
+    border-radius: 15px;
+    background: #fff;
+    box-shadow: 5px 5px 50px 0px rgba(0, 0, 0, 0.15);
+    height: 43px;
+    outline: 0;
+    border: 0;
+    color: #8d8d8d;
+    text-shadow: 2px 2px 2px 0px rgba(0, 0, 0, 0.1);
+    font-size: 18px;
+    font-weight: 500;
+    padding-left: 18px;
+}
+.search-box input::placeholder {
+    color: #8d8d8d;
+    text-shadow: 2px 2px 2px 0px rgba(0, 0, 0, 0.1);
+    font-size: 18px;
+    font-weight: 500;
+}
+.search-box label {
+    position: absolute;
+    color: #8d8d8d;
+    text-shadow: 2px 2px 2px 0px rgba(0, 0, 0, 0.1);
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    left: 18px;
+    top: 8px;
+}
+
+.weather-wrapper {
+    position: relative;
+    width: 100%;
+    /* height: 100%; */
+    background-color: red;
+    margin-bottom: 40px;
+    border-radius: 20px;
+    overflow: hidden;
+    background: linear-gradient(133deg, #197bb2 0%, rgba(126, 209, 255, 0) 100%);
+    box-shadow: 5px 5px 50px 0px rgba(17, 17, 17, 0.1);
+    background: url('./assets/beach.jpeg'), lightgray 50% / cover no-repeat;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    z-index: -1;
+}
+
+.linear-gradient {
+    position: absolute;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    content: '';
+    background: linear-gradient(133deg, #197bb2 0%, rgba(126, 209, 255, 0) 100%);
+}
+
+.grid-wrapper {
+    display: flex;
+    flex-direction: column;
+    /* height: 100vh; */
+}
+
+h1 {
+    color: #fff;
+    /* Drop Shadow */
+    text-shadow: 4px 4px 10px 0px rgba(0, 0, 0, 0.15);
+    font-family: Poppins;
+    font-size: 64px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 110%;
+}
+
+.content-wrapper {
+    padding: 30px 40px 40px;
+    text-shadow: 4px 4px 5px rgba(0, 0, 0, 0.15);
+    color: #fff;
+}
+
+.condition {
+    font-weight: 700;
+    font-size: 16px;
+}
+
+.temp {
+    border-radius: 15px;
+    border: 5px solid #ffed8d;
+    background: #ffed8d;
+    filter: drop-shadow(5px 5px 20px rgba(0, 0, 0, 0.1));
+    width: fit-content;
+    padding: 0px 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 24px;
+    text-shadow: 4px 4px 5px rgba(0, 0, 0, 0.15);
+    font-size: 40px;
+    font-weight: 700;
+    color: #626262;
+}
+
+.humidity-wind {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+    margin: 40px 0;
+    padding: 30px 0;
+    border-top: 2px solid white;
+    border-bottom: 2px solid;
+    width: 350px;
+}
+.humidity,
+.wind {
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 700;
+}
+
+.wind-measurement,
+.humidity-measurement {
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 500;
+}
+
+.condition-wrap {
+    display: flex;
+    align-items: center;
+    flex-direction: row-reverse;
+    width: fit-content;
+    margin-left: -10px;
+}
+
+.red-border {
+    border: 1px solid red !important;
+}
+
+/* FORECAST */
+
+.forecast-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+}
+
+.forecast {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    align-items: center;
+    border: 3px solid #fffae0;
+    border-radius: 15px;
+    padding: 15px 35px;
+}
+.day-of-week {
+    color: #fff;
+    text-shadow: 4px 4px 10px rgba(0, 0, 0, 0.15);
+    font-size: 22px;
+    line-height: 90%;
+}
+
+.temp-forecast {
+    font-size: 26px;
+    font-weight: 700;
+}

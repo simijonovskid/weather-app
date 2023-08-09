@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Weather api</title>
+        <link rel="stylesheet" href="style.css" />
+        <script src="/script.js" defer></script>
+    </head>
+    <body>
+        <div class="container">
+            <div class="grid-wrapper">
+                <div class="nav">
+                    <a href="/" class="logo">weather.app</a>
+                    <form class="search-box" id="search-form">
+                        <input type="text" id="search" placeholder="Search" class="input" />
+                    </form>
+                    <a href="/" class="mail">simijonovski@gmail.com</a>
+                </div>
+                <div class="weather-wrapper">
+                    <div class="linear-gradient"></div>
+                    <div class="content-wrapper">
+                        <div class="location-temp">
+                            <h1 class="city-name"></h1>
+                            <p class="country"></p>
+                            <div class="condition-wrap">
+                                <p class="condition"></p>
+                                <img
+                                    src="http://cdn.weatherapi.com/weather/64x64/day/113.png"
+                                    alt="weather-condition"
+                                    class="condition-img"
+                                />
+                            </div>
+
+                            <div class="temp"><span class="temperature"></span></div>
+                        </div>
+                        <div class="humidity-wind">
+                            <div class="humidity-wrapper">
+                                <div class="humidity">Humidity</div>
+                                <div class="humidity-measurement"></div>
+                            </div>
+                            <div class="wind-wrapper">
+                                <div class="wind">Wind</div>
+                                <div class="wind-measurement"></div>
+                            </div>
+                        </div>
+                        <div class="forecast-wrapper">
+                            <!-- <div class="forecast">
+                                <img
+                                    src="http://cdn.weatherapi.com/weather/64x64/day/113.png"
+                                    alt="condition-img"
+                                />
+                                <div class="day-of-week">Mon</div>
+                                <div class="temp-forecast">30 °C</div>
+                            </div>
+                            -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
