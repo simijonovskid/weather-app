@@ -1,10 +1,15 @@
-// API KEY : c16e2c9d050748858c9210151230507
-// https://api.weatherapi.com/v1/current.json?key=c16e2c9d050748858c9210151230507&q=London&aqi=no
-// GEOCODING https://geocode.maps.co/reverse?lat=${latitude}&lon=${longitude}
-// GEOCODING https://geocode.xyz/${lat},${lng}?json=1
-// OPWENWEATHER API KEY : a9dcd121273b110b324a9acd0b2633a8
-// http://api.openweathermap.org/geo/1.0/direct?q=London&limit=5&appid={API key}
-let city;
+import { API_KEY } from './apikey.js';
+
+const loc = document.querySelector('.city-name');
+const temp = document.querySelector('.temperature');
+const searchForm = document.querySelector('#search-form');
+const condition = document.querySelector('.condition');
+const conditionImg = document.querySelector('.condition-img');
+const input = document.querySelector('.input');
+const humidity = document.querySelector('.humidity-measurement');
+const wind = document.querySelector('.wind-measurement');
+const forecastWrapper = document.querySelector('.forecast-wrapper');
+const country = document.querySelector('.country');
 
 navigator.geolocation.getCurrentPosition(
     async function getCity(pos) {
@@ -20,17 +25,7 @@ navigator.geolocation.getCurrentPosition(
 
 const WEEKDAY = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 
-const form = document.querySelector('#form');
-const loc = document.querySelector('.city-name');
-const temp = document.querySelector('.temperature');
-const searchForm = document.querySelector('#search-form');
-const condition = document.querySelector('.condition');
-const conditionImg = document.querySelector('.condition-img');
-const input = document.querySelector('.input');
-const humidity = document.querySelector('.humidity-measurement');
-const wind = document.querySelector('.wind-measurement');
-const forecastWrapper = document.querySelector('.forecast-wrapper');
-const country = document.querySelector('.country');
+
 
 const forecastHTML = data => {
     const date = new Date(data.date);
@@ -62,10 +57,9 @@ const renderData = data => {
         forecastWrapper.insertAdjacentHTML('beforeend', forecastHTML(day));
     });
 };
-
 const fetchWeather = async location => {
     const weatherData = await fetch(
-        `https://api.weatherapi.com/v1/forecast.json?key=c16e2c9d050748858c9210151230507&q=${location}&days=4&aqi=no&alerts=no`
+        `https://api.weatherapi.com/v1/forecast.json?key=${API_KEY}&q=${location}&days=4&aqi=no&alerts=no`
     );
 
     input.classList.remove('red-border');
@@ -73,8 +67,6 @@ const fetchWeather = async location => {
     if (!weatherData.ok) input.classList.add('red-border');
 
     const data = await weatherData.json();
-
-    console.log('DATA WEATHER', data);
 
     renderData(data);
 };
