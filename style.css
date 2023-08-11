@@ -179,8 +179,15 @@ h1 {
 
 .red-border {
     border: 1px solid red !important;
+    position: relative;
 }
-
+.red-border::before{
+    position: absolute;
+    content: "";
+    width: 20px;
+    height: 20px;
+    background-color: red;
+}
 /* FORECAST */
 
 .forecast-wrapper {
