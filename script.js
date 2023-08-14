@@ -1,5 +1,8 @@
 import { API_KEY } from './apikey.js';
 
+//export const API_KEY = 'c16e2c9d050748858c9210151230507';
+
+
 const loc = document.querySelector('.city-name');
 const temp = document.querySelector('.temperature');
 const searchForm = document.querySelector('#search-form');
