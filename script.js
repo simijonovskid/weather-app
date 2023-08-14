@@ -1,8 +1,5 @@
 import { API_KEY } from './apikey.js';
 
-//export const API_KEY = 'c16e2c9d050748858c9210151230507';
-
-
 const loc = document.querySelector('.city-name');
 const temp = document.querySelector('.temperature');
 const searchForm = document.querySelector('#search-form');
@@ -14,21 +11,19 @@ const wind = document.querySelector('.wind-measurement');
 const forecastWrapper = document.querySelector('.forecast-wrapper');
 const country = document.querySelector('.country');
 
-navigator.geolocation.getCurrentPosition(
-    async function getCity(pos) {
-        const { latitude: lat, longitude: long } = pos.coords;
-        console.log(lat, long);
-        const geocode = await fetch(`https://geocode.maps.co/reverse?lat=${lat}&lon=${long}`);
-        const data = await geocode.json();
-        console.log('DATA GEOCODING', data.address.city);
-        city = data.address.city;
-    },
-    err => console.log('Error getting your location', err)
-);
+// navigator.geolocation.getCurrentPosition(
+//     async function getCity(pos) {
+//         const { latitude: lat, longitude: long } = pos.coords;
+//         console.log(lat, long);
+//         const geocode = await fetch(`https://geocode.maps.co/reverse?lat=${lat}&lon=${long}`);
+//         const data = await geocode.json();
+//         console.log('DATA GEOCODING', data.address.city);
+//         city = data.address.city;
+//     },
+//     err => console.log('Error getting your location', err)
+// );
 
 const WEEKDAY = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
-
-
 
 const forecastHTML = data => {
     const date = new Date(data.date);
@@ -56,22 +51,31 @@ const renderData = data => {
     wind.textContent = `${data.current.wind_kph} km/h`;
     country.textContent = `${data.location.region}, ${data.location.country}`;
 
-    data.forecast.forecastday.map(day => {
+    data.forecast.forecastday?.map(day => {
         forecastWrapper.insertAdjacentHTML('beforeend', forecastHTML(day));
     });
 };
+
 const fetchWeather = async location => {
-    const weatherData = await fetch(
-        `https://api.weatherapi.com/v1/forecast.json?key=${API_KEY}&q=${location}&days=4&aqi=no&alerts=no`
-    );
+    try {
+        const weatherData = await fetch(
+            `https://api.weatherapi.com/v1/forecast.json?key=${API_KEY}&q=${location}&days=4&aqi=no&alerts=no`
+        );
 
-    input.classList.remove('red-border');
+        input.classList.remove('red-border');
 
-    if (!weatherData.ok) input.classList.add('red-border');
+        if (!weatherData.ok) {
+            input.classList.add('red-border');
+            alert("That city does not exist. Try another one")
+            console.log('weather data', weatherData);
+            return;
+        }
+        const data = await weatherData.json();
 
-    const data = await weatherData.json();
-
-    renderData(data);
+        renderData(data);
+    } catch (error) {
+        alert(error);
+    }
 };
 
 searchForm.addEventListener('submit', e => {
