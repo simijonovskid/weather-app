@@ -1,4 +1,5 @@
-import { API_KEY } from './apikey.js';
+// import { API_KEY } from './apikey.js';
+console.log("LOGG");
 
 const loc = document.querySelector('.city-name');
 const temp = document.querySelector('.temperature');
@@ -11,17 +12,7 @@ const wind = document.querySelector('.wind-measurement');
 const forecastWrapper = document.querySelector('.forecast-wrapper');
 const country = document.querySelector('.country');
 
-// navigator.geolocation.getCurrentPosition(
-//     async function getCity(pos) {
-//         const { latitude: lat, longitude: long } = pos.coords;
-//         console.log(lat, long);
-//         const geocode = await fetch(`https://geocode.maps.co/reverse?lat=${lat}&lon=${long}`);
-//         const data = await geocode.json();
-//         console.log('DATA GEOCODING', data.address.city);
-//         city = data.address.city;
-//     },
-//     err => console.log('Error getting your location', err)
-// );
+
 
 const WEEKDAY = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 
@@ -84,4 +75,17 @@ searchForm.addEventListener('submit', e => {
     fetchWeather(inputValue);
 });
 
-window.addEventListener('DOMContentLoaded', fetchWeather('London'));
+navigator.geolocation.getCurrentPosition(
+    async function getCity(pos) {
+        const { latitude: lat, longitude: long } = pos.coords;
+        console.log(lat, long);
+        window.addEventListener('DOMContentLoaded', fetchWeather(lat+" " +long));
+    },
+    err => {
+        console.log('Error getting your location', err)
+        fetchWeather('London')
+    }
+);
+
+
+
