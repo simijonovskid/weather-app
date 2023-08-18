@@ -1,5 +1,4 @@
-// import { API_KEY } from './apikey.js';
-console.log("LOGG");
+import { API_KEY } from './apikey.js';
 
 const loc = document.querySelector('.city-name');
 const temp = document.querySelector('.temperature');
@@ -19,7 +18,6 @@ const WEEKDAY = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 const forecastHTML = data => {
     const date = new Date(data.date);
     const dayOfTheWeek = WEEKDAY[date.getDay()];
-    console.log('date', date);
 
     return `<div class="forecast">
     <img
@@ -32,7 +30,6 @@ const forecastHTML = data => {
 };
 
 const renderData = data => {
-    console.log('DATA', data);
     forecastWrapper.innerHTML = '';
     temp.textContent = `${data.current.temp_c} °C`;
     loc.textContent = data.location.name;
